@@ -1,0 +1,60 @@
+# v1
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: GaloshesMineBox
+  name: galoshes mine box
+  description: A small box containing a galoshes mine. Packaging disintegrates when opened, leaving no evidence behind.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Storage/penbox.rsi
+    state: hypopen
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingShoesGaloshesMine
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesGaloshesMine
+  name: галоши
+  description: Резиновые ботинки.
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Specific/galoshes.rsi
+  - type: Clothing
+    sprite: Clothing/Shoes/Specific/galoshes.rsi
+  - type: GaloshesMine
+
+# v2
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: GaloshesMineBoxV2
+  name: galoshes mine box
+  description: A small box containing a galoshes mine. Packaging disintegrates when opened, leaving no evidence behind.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Storage/penbox.rsi
+    state: hypopen
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingShoesGaloshesMineV2
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesGaloshesMineV2
+  name: галоши
+  description: Резиновые ботинки.
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Specific/galoshes.rsi
+  - type: Clothing
+    sprite: Clothing/Shoes/Specific/galoshes.rsi
+  - type: GaloshesMine
+    v2: true

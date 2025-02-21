@@ -1,0 +1,37 @@
+- type: listing
+  id: uplinkGaloshesMine
+  name: uplink-galoshes-mine-name
+  description: uplink-galoshes-mine-desc
+  productEntity: GaloshesMineBox
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkDisruption
+  conditions:
+  - !type:BuyerJobCondition
+    blacklist:
+    - Janitor
+
+- type: listing
+  id: uplinkGaloshesMineV2
+  name: uplink-galoshes-mine-name
+  description: uplink-galoshes-mine-desc
+  productEntity: GaloshesMineBoxV2
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Janitor
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle
