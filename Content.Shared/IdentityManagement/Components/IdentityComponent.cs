@@ -15,8 +15,10 @@ public sealed partial class IdentityComponent : Component
 {
     [ViewVariables]
     public ContainerSlot IdentityEntitySlot = default!;
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite)] // Imperial Spellward Identity start
     public List<EntityUid> ListEntities = new() { };
+    public string UnknownName;
+    public string KnownName; // Imperial Spellward Identity end
 }
 
 /// <summary>
@@ -25,6 +27,7 @@ public sealed partial class IdentityComponent : Component
 /// </summary>
 public sealed class IdentityRepresentation
 {
+
     public string TrueName;
     public Gender TrueGender;
 

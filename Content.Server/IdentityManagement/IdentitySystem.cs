@@ -92,7 +92,7 @@ public sealed class IdentitySystem : SharedIdentitySystem
             return;
 
         var representation = GetIdentityRepresentation(uid);
-        var name = GetIdentityName(uid, identity, representation, ev.Examiner);
+        var name = GetIdentityName(uid, ev.Examiner);
 
         // Clone the old entity's grammar to the identity entity, for loc purposes.
         if (TryComp<GrammarComponent>(uid, out var grammar))
@@ -121,8 +121,11 @@ public sealed class IdentitySystem : SharedIdentitySystem
         SetIdentityCriminalIcon(uid);
     }
 
-    public string GetIdentityName(EntityUid target, IdentityComponent comp, IdentityRepresentation representation, EntityUid? examiner) // Imperial Spellward Identity
+    public string GetIdentityName(EntityUid target, EntityUid? examiner) // Imperial Spellward Identity
     {
+        var representation = GetIdentityRepresentation(target);
+        var comp = CompOrNull<IdentityComponent>(target);
+        if (comp is null) return representation.ToStringKnown(true);
         if (examiner is null) return representation.ToStringUnknown();
         if (comp.ListEntities.Contains(examiner.Value) || EnsureComp<IdentityFactionComponent>(target).Faction == EnsureComp<IdentityFactionComponent>(examiner.Value).Faction || target == examiner)
         {
@@ -185,7 +188,7 @@ public sealed class IdentitySystem : SharedIdentitySystem
     Wizard's way*/
 
     public IdentityRepresentation GetIdentityRepresentation(EntityUid target,
-        HumanoidAppearanceComponent? appearance = null) // Imperial Spellward Identity
+        HumanoidAppearanceComponent? appearance = null) // Imperial Spellward Identity start
     {
         var age = 18;
         var gender = Gender.Epicene;
@@ -201,6 +204,11 @@ public sealed class IdentitySystem : SharedIdentitySystem
         var ageString = _humanoid.GetAgeRepresentation(species, age);
         var trueName = Name(target);
         return new(trueName, gender, ageString, null, null);
+    }
+    private void OnComponentInit(EntityUid uid, IdentityComponent comp, ComponentInit _)
+    {
+        comp.UnknownName = GetIdentityRepresentation(uid).ToStringUnknown();
+        comp.KnownName = GetIdentityRepresentation(uid).ToStringKnown(true);
     }
     #endregion
 }

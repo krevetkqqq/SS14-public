@@ -314,7 +314,7 @@ internal sealed partial class ChatManager : IChatManager
         {
             var identitySystem = _entityManager.System<IdentitySystem>();
             var listener = _playerManager.GetSessionByChannel(client).AttachedEntity ?? null;
-            var name = identitySystem.GetIdentityName(source, _entityManager.EnsureComponent<IdentityComponent>(source), identitySystem.GetIdentityRepresentation(source), listener);
+            var name = identitySystem.GetIdentityName(source, listener);
             Console.WriteLine($"wrapped: {wrappedMessage}, msg: {message}, name: {name}");
             wrappedMessage = wrappedMessage.Replace(
                 "SpellwardIdentityReplace",

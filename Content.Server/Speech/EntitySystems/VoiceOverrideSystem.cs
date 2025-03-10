@@ -19,7 +19,7 @@ public sealed partial class VoiceOverrideSystem : EntitySystem
         if (!entity.Comp.Enabled)
             return;
 
-        args.VoiceName = _identity.GetIdentityName(entity.Owner, EnsureComp<IdentityComponent>(entity.Owner), _identity.GetIdentityRepresentation(entity.Owner, null), null);
+        args.VoiceName = _identity.GetIdentityName(entity.Owner, null);
         args.SpeechVerb = entity.Comp.SpeechVerbOverride ?? args.SpeechVerb;
     }
 }
