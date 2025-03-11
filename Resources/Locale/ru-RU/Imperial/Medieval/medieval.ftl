@@ -2509,3 +2509,4 @@ ent-MedievalFloraTree05 = проклятое дерево
 ent-MedievalFloraTree06 = проклятое дерево
     .desc = Проклято
     .suffix = { "Средневековье, декор" }
+MedievalDurability = Текущее состояние: {$durab}
